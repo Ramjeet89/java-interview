@@ -171,6 +171,21 @@ public class Employee {
         reduceEmployeeSalary(listOfEmployee);
         maxSalaryOfEmployee(listOfEmployee);
         countEmployee(listOfEmployee);
+        sortEmployeeBasedOnGender(listOfEmployee);
+        sortByAge(listOfEmployee);
+    }
+
+    private static void sortByAge(List<Employee> listOfEmployee) {
+        List<Employee> sortByAge = listOfEmployee.stream().sorted(Comparator.comparing(Employee::getAge)).toList();
+        sortByAge.forEach(System.out::println);
+    }
+
+    private static void sortEmployeeBasedOnGender(List<Employee> listOfEmployee) {
+        List<Employee> sortedByGender = listOfEmployee.stream()
+                .filter(employee -> employee.getGender() == Gender.MALE)
+                .sorted(Comparator.comparing(Employee::getFirstName))
+                .toList();
+        sortedByGender.forEach(System.out::println);
     }
 
     private static void countEmployee(List<Employee> listOfEmployee) {
