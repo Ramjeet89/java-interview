@@ -1,7 +1,11 @@
 package com.coding.interview.alight;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.function.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class LambdaExample {
     public static void main(String[] args) {
@@ -60,5 +64,27 @@ public class LambdaExample {
         Supplier<Date> currentDate = Date::new;
         currentDate.get();
         System.out.println(currentDate.get());
+        System.out.println("=====================================================");
+        Supplier<List<Integer>> oddNumberSupplier = () -> {
+            List<Integer> oddNumbers = new ArrayList<>();
+            for (int i = 1; i <= 100; i++) {
+                if (i % 2 != 0) {
+                    oddNumbers.add(i);
+                }
+            }
+            return oddNumbers;
+        };
+        List<Integer> oddNumbers1 = oddNumberSupplier.get();
+        System.out.println("Odd numbers from 1 to 100: " + oddNumbers1);
+
+        //or
+        Supplier<Stream<Integer>> oddNumberSupplier1 = () ->
+                Stream.iterate(1, n -> n + 2); // Generate an infinite sequence of odd numbers
+        // Filter and collect odd numbers from 1 to 100
+        String oddNumbersInRange = oddNumberSupplier1.get()
+                .limit(50) // Limit the range to 1-100 (50 odd numbers)
+                .map(Object::toString) // Convert to strings
+                .collect(Collectors.joining(", ")); // Join the numbers with commas
+        System.out.println("Odd numbers from 1 to 100: " + oddNumbersInRange);
     }
 }

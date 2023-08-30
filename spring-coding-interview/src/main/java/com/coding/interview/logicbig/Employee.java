@@ -1,7 +1,6 @@
 package com.coding.interview.logicbig;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 class Employee {
     private String name;

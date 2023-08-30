@@ -2,8 +2,6 @@ package com.coding.interview.alight;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 public class Employee_AddressMain {
     public static List<Employee> listOfEmployee = List.of(
             new Employee(101, 34, "Ramjeet", "HR", 40000.0, new Address("String1", 560037)),
